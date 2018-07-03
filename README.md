@@ -3,15 +3,13 @@ An open-source web application for publishing of documentation, wikis, and ebook
 
 Deployment link to come in future push.
 
-## Project Information
-
-Full stack application built using the BuilderBook [tutorial](https://builderbook.org)
+Built using the BuilderBook [tutorial](https://builderbook.org).
 
 ## Tech
 React, Material-UI, Next.js, Express, Mongoose, MongoDB.
 
 ## API's Utilized
-Google, Github, AWS SES, Mailchimp, Stripe.
+Google, Github, AWS SES, MailChimp, Stripe.
 
 ## Features
 Google for authentication, Github for Markdown & collaboration, AWS SES for transactional emails, MailChimp for newsletters, Stripe for commerce.
