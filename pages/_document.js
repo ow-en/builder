@@ -1,8 +1,4 @@
-import React from 'react';
-import JssProvider from 'react-jss/lib/JssProvider';
 import Document, { Head, Main, NextScript } from 'next/document';
-
-import getContext from '../lib/context';
 
 class MyDocument extends Document {
   render() {
@@ -13,7 +9,6 @@ class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="google" content="notranslate" />
           <meta name="theme-color" content="#1976D2" />
-
           <link
             rel="shortcut icon"
             href="https://storage.googleapis.com/builderbook/favicon32.png"
@@ -28,7 +23,6 @@ class MyDocument extends Document {
             href="https://storage.googleapis.com/builderbook/nprogress.min.css"
           />
           <link rel="stylesheet" href="https://storage.googleapis.com/builderbook/vs.min.css" />
-
           <style>
             {`
               a, a:focus {
@@ -50,12 +44,14 @@ class MyDocument extends Document {
                 display:block;
                 overflow-x:auto;
                 padding:0.5em;
-                background:#FFF;
+                background: #FFF;
                 color: #000;
                 border: 1px solid #ddd;
               }
               code {
                 font-size: 14px;
+                background: #FFF;
+                padding: 3px 5px;
               }
             `}
           </style>
@@ -77,31 +73,5 @@ class MyDocument extends Document {
     );
   }
 }
-
-MyDocument.getInitialProps = ({ renderPage }) => {
-  const pageContext = getContext();
-  const page = renderPage(Component => props => (
-    <JssProvider
-      registry={pageContext.sheetsRegistry}
-      generateClassName={pageContext.generateClassName}
-    >
-      <Component pageContext={pageContext} {...props} />
-    </JssProvider>
-  ));
-
-  return {
-    ...page,
-    pageContext,
-    styles: (
-      <style
-        id="jss-server-side"
-        // eslint-disable-next-line
-        dangerouslySetInnerHTML={{
-          __html: pageContext.sheetsRegistry.toString(),
-        }}
-      />
-    ),
-  };
-};
 
 export default MyDocument;
